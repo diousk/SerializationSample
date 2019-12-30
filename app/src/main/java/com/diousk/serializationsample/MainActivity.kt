@@ -43,21 +43,23 @@ class MainActivity : AppCompatActivity() {
             val adapter = moshiAdapter
             Log.d("Main", "moshiParse start parsing")
 
-            // start deserialize & serialize
+            // start deserialize
             var mockData: List<MockData>? = null
             val deserializeTime = measureTimeMillis {
                 (1..LOOP_TIME).forEach { _ ->
                     mockData = adapter.fromJson(mockJsonString)
                 }
             }
-            Log.d("Main", "moshiParse mockData $mockData")
+            Log.d("Main", "moshiParse deserialize $mockData")
+
+            // start serialize
             var json: String? = null
             val serializeTime = measureTimeMillis {
                 (1..LOOP_TIME).forEach { _ ->
                     json = adapter.toJson(mockDataList)
                 }
             }
-            Log.d("Main", "moshiParse json $json")
+            Log.d("Main", "moshiParse serialize $json")
 
             withContext(Dispatchers.Main) {
                 result.text = "result: \n" +
@@ -74,21 +76,23 @@ class MainActivity : AppCompatActivity() {
             val adapter = gsonAdapter
             Log.d("Main", "gsonParse start parsing")
 
-            // start deserialize & serialize
+            // start deserialize
             var mockData: List<MockData>? = null
             val deserializeTime = measureTimeMillis {
                 (1..LOOP_TIME).forEach { _ ->
                     mockData = adapter.fromJson(mockJsonString)
                 }
             }
-            Log.d("Main", "gsonParse mockData $mockData")
+            Log.d("Main", "gsonParse deserialize $mockData")
+
+            // start serialize
             var json: String? = null
             val serializeTime = measureTimeMillis {
                 (1..LOOP_TIME).forEach { _ ->
                     json = adapter.toJson(mockDataList)
                 }
             }
-            Log.d("Main", "gsonParse json $json")
+            Log.d("Main", "gsonParse serialize $json")
 
             withContext(Dispatchers.Main) {
                 result.text = "result: \n" +
@@ -106,21 +110,23 @@ class MainActivity : AppCompatActivity() {
             val type = JacksonParser.type
             Log.d("Main", "jacksonParse start parsing")
 
-            // start deserialize & serialize
+            // start deserialize
             var mockData: List<MockData>? = null
             val deserializeTime = measureTimeMillis {
                 (1..LOOP_TIME).forEach { _ ->
                     mockData = adapter.readValue(mockJsonString, type)
                 }
             }
-            Log.d("Main", "jacksonParse mockData $mockData")
+            Log.d("Main", "jacksonParse deserialize $mockData")
+
+            // start serialize
             var json: String? = null
             val serializeTime = measureTimeMillis {
                 (1..LOOP_TIME).forEach { _ ->
                     json = adapter.writeValueAsString(mockDataList)
                 }
             }
-            Log.d("Main", "jacksonParse json $json")
+            Log.d("Main", "jacksonParse serialize $json")
 
             withContext(Dispatchers.Main) {
                 result.text = "result: \n" +
@@ -136,21 +142,23 @@ class MainActivity : AppCompatActivity() {
             val type = JacksonParser.type
             Log.d("Main", "fastjsonParse start parsing")
 
-            // start deserialize & serialize
+            // start deserialize
             var mockData: List<MockData>? = null
             val deserializeTime = measureTimeMillis {
                 (1..LOOP_TIME).forEach { _ ->
                     mockData = fastjsonAdapter.parseArray(mockJsonString, MockData::class.java)
                 }
             }
-            Log.d("Main", "fastjsonParse mockData $mockData")
+            Log.d("Main", "fastjsonParse deserialize $mockData")
+
+            // start serialize
             var json: String? = null
             val serializeTime = measureTimeMillis {
                 (1..LOOP_TIME).forEach { _ ->
                     json = fastjsonAdapter.toJSONString(mockDataList)
                 }
             }
-            Log.d("Main", "fastjsonParse json $json")
+            Log.d("Main", "fastjsonParse serialize $json")
 
             withContext(Dispatchers.Main) {
                 result.text = "result: \n" +
