@@ -10,6 +10,7 @@
         android:id="@+id/moshi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="moshi serialization"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -18,6 +19,7 @@
         android:id="@+id/gson"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="gson serialization"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/moshi" />
@@ -26,9 +28,19 @@
         android:id="@+id/jackson"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="jackson serialization"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gson" />
+
+    <Button
+        android:id="@+id/fastjson"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="fastjson serialization"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/jackson" />
 
     <TextView
         android:id="@+id/result"
@@ -37,6 +49,6 @@
         android:layout_marginTop="20dp"
         android:text="result: "
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/jackson" />
+        app:layout_constraintTop_toBottomOf="@+id/fastjson" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
