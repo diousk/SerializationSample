@@ -6,4 +6,4 @@
 
 #### (with java model)
 #### deserialize: gson (55 ms) > moshi (62 ms) > fastjson (71 ms) > jackson (102 ms)
-#### serialize  :jackson (47 ms) >= moshi (48 ms) >= fastjson (48 ms) > gson (83 ms)
+#### serialize  : jackson (47 ms) >= moshi (48 ms) >= fastjson (48 ms) > gson (83 ms)
