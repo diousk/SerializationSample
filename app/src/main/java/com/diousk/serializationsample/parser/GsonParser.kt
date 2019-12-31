@@ -1,6 +1,7 @@
 package com.diousk.serializationsample.parser
 
 import com.diousk.serializationsample.model.MockData
+import com.diousk.serializationsample.model.MockDataJava
 import com.diousk.serializationsample.model.mockDataList
 import com.diousk.serializationsample.model.mockJsonString
 import com.google.gson.GsonBuilder
@@ -18,6 +19,18 @@ object GsonParser {
 
         override fun toJson(obj: List<MockData>): String {
             return adapter.toJson(mockDataList)
+        }
+    }
+
+    private val javaType = TypeToken.getParameterized(List::class.java, MockDataJava::class.java)
+    val javaAdapter = object : Adapter<List<MockDataJava>> {
+        private val adapter = gson.getAdapter(javaType) as TypeAdapter<List<MockDataJava>>
+        override fun fromJson(jsonString: String): List<MockDataJava>? {
+            return adapter.fromJson(jsonString)
+        }
+
+        override fun toJson(obj: List<MockDataJava>): String {
+            return adapter.toJson(obj)
         }
     }
 }

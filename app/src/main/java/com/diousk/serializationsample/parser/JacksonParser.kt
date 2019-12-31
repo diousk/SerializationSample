@@ -1,6 +1,7 @@
 package com.diousk.serializationsample.parser
 
 import com.diousk.serializationsample.model.MockData
+import com.diousk.serializationsample.model.MockDataJava
 import com.diousk.serializationsample.model.mockDataList
 import com.diousk.serializationsample.model.mockJsonString
 import com.fasterxml.jackson.core.type.TypeReference
@@ -15,6 +16,18 @@ object JacksonParser {
         }
 
         override fun toJson(obj: List<MockData>): String {
+            return adapter.writeValueAsString(mockDataList)
+        }
+    }
+
+    val javaType = object: TypeReference<List<MockDataJava>>() {}
+    val javaAdapter = object : Adapter<List<MockDataJava>> {
+        private val adapter = jacksonObjectMapper()
+        override fun fromJson(jsonString: String): List<MockDataJava>? {
+            return adapter.readValue(mockJsonString, javaType)
+        }
+
+        override fun toJson(obj: List<MockDataJava>): String {
             return adapter.writeValueAsString(mockDataList)
         }
     }

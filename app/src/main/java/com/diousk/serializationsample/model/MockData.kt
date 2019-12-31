@@ -20,6 +20,25 @@ val mockDataList = listOf(
     MockData(3, "hello3", 3, Child("world3"))
 )
 
+val mockDataJavaList = listOf(
+    MockDataJava().apply {
+        setId(1)
+        setName("hello1")
+        setAge(1)
+    },
+    MockDataJava().apply {
+        setId(2)
+        setName("hello2")
+        setAge(2)
+    },
+    MockDataJava().apply {
+        setId(3)
+        setName("hello3")
+        setAge(3)
+        setChild(Child("world3"))
+    }
+)
+
 // List<MockData>
 val mockJsonString = "[\n" +
     "  {\n" +
