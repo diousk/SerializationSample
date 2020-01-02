@@ -59,3 +59,11 @@
     <init>(...);
     <fields>;
 }
+
+# for moshi-kotlin
+-keep class kotlin.reflect.jvm.internal.impl.builtins.BuiltInsLoaderImpl
+
+-keepclassmembers class kotlin.Metadata {
+    public <methods>;
+}
+-keep class kotlin.Metadata { *; }
