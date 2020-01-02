@@ -1,5 +1,6 @@
 package com.diousk.serializationsample.model
 
+import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
@@ -9,10 +10,9 @@ data class MockData(
 
 @JsonClass(generateAdapter = true)
 data class Child(
-    val name: String = "unknown"
-) {
-    fun crash() : Unit = throw Exception("hello")
-}
+    @Json(name = "name")
+    val childName: String = "unknown"
+)
 
 val mockDataList = listOf(
     MockData(1, "hello1", 1),
